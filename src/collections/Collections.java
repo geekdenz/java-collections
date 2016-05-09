@@ -36,6 +36,13 @@ public class Collections {
 		if (new Long(10L).equals(new Integer(10))){
 			System.out.println("EQUALS");
 		}
+		
+	}
+
+	private boolean someMethod(StrictSet<? extends Number> set) {
+		boolean contains = set.contains(10L);
+		// contains = set.containsStrict(10L); // compile time error!
+		return contains;
 	}
 	
 }
