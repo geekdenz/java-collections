@@ -13,6 +13,8 @@ package collections;
 
 import java.util.HashSet;
 import java.util.Set;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
 
 /**
  *
@@ -43,6 +45,23 @@ public class Collections {
 		boolean contains = set.contains(10L);
 		// contains = set.containsStrict(10L); // compile time error!
 		return contains;
+	}
+	boolean some(StrictSet<Number> set) {
+		return set.containsStrict(10L);
+	}
+	void shapeBound(StrictSet<? extends Shape> set) {
+		set.contains(new Circle());
+		// set.containsStrict(new Circle()); // compile time error!
+		for (Shape shape : set) {
+			shape.autosize();
+		}
+	}
+	// But why not this?
+	void shapeme(StrictSet<Shape> set) {
+		set.containsStrict(new Circle());
+		for (Shape shape : set) {
+			shape.autosize();
+		}
 	}
 	
 }
