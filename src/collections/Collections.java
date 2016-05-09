@@ -39,6 +39,8 @@ public class Collections {
 			System.out.println("EQUALS");
 		}
 		
+		StrictSet<? extends Shape> someSet = new StrictHashSet<Circle>(); // this illustrates the problem!
+		shapeBound(someSet);
 	}
 
 	private boolean someMethod(StrictSet<? extends Number> set) {
@@ -49,7 +51,7 @@ public class Collections {
 	boolean some(StrictSet<Number> set) {
 		return set.containsStrict(10L);
 	}
-	void shapeBound(StrictSet<? extends Shape> set) {
+	static void shapeBound(StrictSet<? extends Shape> set) {
 		set.contains(new Circle());
 		// set.containsStrict(new Circle()); // compile time error!
 		for (Shape shape : set) {
