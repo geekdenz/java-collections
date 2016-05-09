@@ -59,6 +59,7 @@ public class Collections {
 	// But why not this?
 	void shapeme(StrictSet<Shape> set) {
 		set.containsStrict(new Circle());
+		set.add(new Circle());
 		for (Shape shape : set) {
 			shape.autosize();
 		}
